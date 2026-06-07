@@ -63,7 +63,6 @@ body {
     z-index: 100;
     transition: transform 0.3s ease;
 }
-
 /* =============================================
    ELITE LOGO STYLING - Dark + Light Theme (Professional)
 ============================================= */
@@ -538,9 +537,10 @@ body.light #lessonContent li {
     gap: 18px;
 }
 
+/* ==================== MODULE CARDS (Dark + Light Theme) ==================== */
 .module-card {
-    background: var(--card);
-    border: 1px solid var(--border);
+    background: #1e293b;
+    border: 1px solid #334155;
     border-radius: 16px;
     padding: 20px;
     cursor: pointer;
@@ -549,7 +549,17 @@ body.light #lessonContent li {
 
 .module-card:hover {
     border-color: var(--primary);
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Light mode specific improvements for module cards */
+body.light .module-card {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+body.light .module-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Modal */
