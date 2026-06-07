@@ -64,6 +64,9 @@ body {
     transition: transform 0.3s ease;
 }
 
+/* =============================================
+   ELITE LOGO STYLING - Dark + Light Theme (Professional)
+============================================= */
 .logo {
     margin-bottom: 20px;
 }
@@ -127,7 +130,6 @@ body.light .logo-icon {
     transform: scale(1.01);
     transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 .search-box {
     margin-bottom: 20px;
