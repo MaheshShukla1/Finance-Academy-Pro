@@ -11,10 +11,45 @@
     <div class="app">
         <!-- SIDEBAR -->
         <aside class="sidebar" id="sidebar">
-            <div class="logo">
-                <h1>Finance Academy</h1>
-                <span>Pro • EPC &amp; MEP</span>
-            </div>
+<!-- ==================== ELITE PROFESSIONAL LOGO ==================== -->
+<div class="logo">
+    <a href="#" class="logo-link" onclick="showDashboard(); return false;">
+        
+        <!-- ==================== MAIN LOGO (Desktop) ==================== -->
+        <svg class="logo-main" width="255" height="42" viewBox="0 0 255 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Icon -->
+            <g>
+                <!-- Building -->
+                <path d="M7 34V17L13 11L19 17V34H7Z" fill="currentColor"/>
+                <!-- Blue highlight -->
+                <path d="M10 34V20L13 17L16 20V34" fill="#3b82f6"/>
+                <!-- Growth Arrow -->
+                <path d="M23 9L28 4L33 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M28 4V15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            </g>
+            
+            <!-- Text -->
+            <text x="42" y="27" 
+                  font-family="Inter, system-ui, -apple-system, sans-serif" 
+                  font-size="20" font-weight="700" fill="currentColor" 
+                  letter-spacing="-0.3">Finance Academy</text>
+            
+            <text x="42" y="40" 
+                  font-family="Inter, system-ui, -apple-system, sans-serif" 
+                  font-size="13.5" font-weight="700" fill="#3b82f6">Pro</text>
+        </svg>
+
+        <!-- ==================== ICON ONLY (Mobile) ==================== -->
+        <svg class="logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 30V15L12 9L18 15V30H6Z" fill="currentColor"/>
+            <path d="M9 30V17L12 14L15 17V30" fill="#3b82f6"/>
+            <path d="M21 8L26 3L31 8" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
+            <path d="M26 3V14" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
+        </svg>
+    </a>
+    
+    <span class="logo-tagline">EPC &amp; MEP Finance</span>
+</div>
 
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search lessons...">
