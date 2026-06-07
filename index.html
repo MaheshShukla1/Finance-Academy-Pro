@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Academy Pro | EPC &amp; MEP • P1</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <h1>Finance Academy</h1>
+                <span>Pro • EPC &amp; MEP</span>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search lessons...">
+            </div>
+
+            <div class="progress-section">
+                <h3>Learning Progress</h3>
+                <div class="progress-bar"><div id="progressFill"></div></div>
+                <div id="progressText">0% Complete</div>
+            </div>
+
+            <nav class="module-nav" id="moduleNav"></nav>
+
+            <div style="margin-top:auto; padding-top:16px; border-top:1px solid var(--border);">
+                <div onclick="showBookmarkManager()" style="cursor:pointer; padding:8px 12px; font-size:13px; display:flex; align-items:center; gap:8px;">
+                    ⭐ Bookmarks <span id="bookmarkCount" style="margin-left:auto; background:var(--primary); color:white; padding:1px 7px; border-radius:999px; font-size:11px;">0</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <div class="topbar">
+                <div>
+                    <h2 id="moduleTitle">Dashboard</h2>
+                    <p id="topbarSubtitle">Master real-world EPC &amp; MEP finance</p>
+                </div>
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <button class="hamburger" id="hamburgerBtn">☰</button>
+                    <div class="view-tabs">
+                        <button class="view-tab active" data-view="dashboard">Dashboard</button>
+                        <button class="view-tab" data-view="lesson">Lessons</button>
+                    </div>
+                    <div class="theme-toggle" id="themeToggle"><span id="themeIcon">🌙</span></div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD VIEW -->
+            <div id="dashboardView">
+            <!-- DASHBOARD HERO (Updated - P3) -->
+<div class="dashboard-hero">
+    <div style="max-width:720px;">
+        <h1>Welcome back, Mahesh 👋</h1>
+        <p style="margin:12px 0 24px; opacity:0.9; font-size:15px;">
+            You have completed <strong id="heroCompleted">0</strong> lessons.<br>
+            Practice real-world MEP finance decisions before making them on actual projects.
+        </p>
+        
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            
+            <!-- Cash Flow Simulator -->
+            <button onclick="Simulators.cashFlow.open()" class="hero-btn primary">
+                💰 Cash Flow Simulator
+            </button>
+
+            <!-- Project Profitability -->
+            <button onclick="Simulators.projectProfitability.open()" class="hero-btn secondary">
+                📈 Project Profitability
+            </button>
+
+            <!-- Procurement Negotiation -->
+            <button onclick="Simulators.procurement.open()" class="hero-btn secondary">
+                🛒 Procurement Negotiation
+            </button>
+
+            <!-- NEW: Own Project Simulator -->
+            <button onclick="Simulators.ownProject.open()" class="hero-btn secondary">
+                📊 Own Project Simulator
+            </button>
+
+        </div>
+    </div>
+</div>
+
+                <h3 style="margin:0 0 16px 4px;">Your Learning Modules</h3>
+                <div class="module-grid" id="moduleGrid"></div>
+
+                <div style="margin-top:40px;">
+                    <h3 style="margin-bottom:12px;">Quick Excel Templates (P1)</h3>
+                    <div class="excel-grid" id="excelGrid"></div>
+                </div>
+            </div>
+
+            <!-- LESSON VIEW -->
+            <div id="lessonView" style="display:none;">
+                <section class="lesson-section">
+                    <div class="lesson-card">
+                        <div class="lesson-header">
+                            <div>
+                                <h3 id="lessonTitle"></h3>
+                                <div id="lessonMeta" style="margin-top:4px;"></div>
+                            </div>
+                            <div class="lesson-actions">
+                                <button id="bookmarkBtn">⭐ Bookmark</button>
+                                <button id="completeBtn">✅ Complete</button>
+                            </div>
+                        </div>
+                        <div id="lessonContent"></div>
+                    </div>
+                </section>
+
+                <div class="lesson-navigation">
+                    <button id="prevLesson">← Previous</button>
+                    <button id="nextLesson">Next →</button>
+                </div>
+
+                <section style="margin-top:32px;">
+                    <h2>Quick Calculators</h2>
+                    <div class="calculator-grid" id="calculatorGrid"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/lesson.js"></script>
+    <script src="js/simulators.js"></script>
+    <script src="js/excel.js"></script>
+    <script src="js/dashboard.js"></script>
+    
+    <script>
+        function bootFinanceAcademy() {
+            if (typeof initCore === 'function') initCore();
+            if (typeof initNavigation === 'function') initNavigation();
+            if (typeof initLesson === 'function') initLesson();
+            if (typeof ExcelAcademy !== 'undefined' && ExcelAcademy.init) ExcelAcademy.init('excelGrid');
+            if (typeof initDashboard === 'function') initDashboard();
+            
+            const dashboard = document.getElementById('dashboardView');
+            const lessonView = document.getElementById('lessonView');
+            if (dashboard) dashboard.style.display = 'block';
+            if (lessonView) lessonView.style.display = 'none';
+        }
+        window.onload = bootFinanceAcademy;
+    </script>
+</body>
+</html>

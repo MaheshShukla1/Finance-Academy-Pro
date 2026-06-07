@@ -1,0 +1,800 @@
+/* =============================================
+   Finance Academy Pro - Modular P1 Styles
+   Professional Dark + Light Theme for EPC & MEP
+============================================= */
+
+:root {
+    --bg: #0f172a;
+    --sidebar: #111827;
+    --card: #1e293b;
+    --primary: #3b82f6;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --border: #334155;
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    --accent: #60a5fa;
+}
+
+body.light {
+    --bg: #f8fafc;
+    --sidebar: #ffffff;
+    --card: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ==================== SIDEBAR ==================== */
+.sidebar {
+    width: 300px;
+    background: var(--sidebar);
+    border-right: 1px solid var(--border);
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding: 24px 20px;
+    overflow-y: auto;
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+.logo {
+    margin-bottom: 24px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.logo span {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--card);
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.search-box input:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.progress-section {
+    background: var(--card);
+    padding: 16px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+}
+
+.progress-bar {
+    height: 8px;
+    background: var(--bg);
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 10px 0 6px;
+}
+
+#progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--success));
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+}
+
+/* Collapsible Modules */
+.module-group {
+    margin-bottom: 8px;
+}
+
+.module-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 14px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.module-header:hover {
+    background: rgba(59, 130, 246, 0.08);
+    border-color: var(--primary);
+}
+
+.module-header.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.module-header .count {
+    font-size: 12px;
+    background: rgba(255,255,255,0.15);
+    padding: 1px 8px;
+    border-radius: 999px;
+}
+
+.lesson-list {
+    list-style: none;
+    padding-left: 8px;
+    margin-top: 4px;
+    display: none;
+}
+
+.lesson-list.open {
+    display: block;
+}
+
+.lesson-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    margin: 2px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 13.5px;
+    color: var(--text);
+    transition: all 0.15s;
+    position: relative;
+}
+
+.lesson-item:hover {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.lesson-item.active {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+
+.lesson-item.completed::after {
+    content: "✓";
+    position: absolute;
+    right: 14px;
+    color: var(--success);
+    font-weight: 700;
+}
+
+/* ==================== MAIN CONTENT ==================== */
+.main-content {
+    margin-left: 300px;
+    flex: 1;
+    padding: 28px 32px;
+    max-width: 1100px;
+}
+
+/* Topbar */
+.topbar {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 50;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.topbar h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* View Tabs */
+.view-tabs {
+    display: flex;
+    gap: 6px;
+}
+
+.view-tab {
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.view-tab.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Lesson Card */
+.lesson-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+    min-height: 520px;
+}
+
+.lesson-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.lesson-header h3 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.lesson-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.lesson-actions button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#bookmarkBtn {
+    background: #8b5cf6;
+    color: white;
+}
+
+#completeBtn {
+    background: var(--success);
+    color: white;
+}
+
+/* Lesson Sections */
+#lessonContent h4 {
+    margin: 28px 0 10px;
+    color: var(--accent);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#lessonContent p, #lessonContent li {
+    line-height: 1.75;
+    color: #e2e8f0;
+    margin-bottom: 8px;
+}
+
+body.light #lessonContent p,
+body.light #lessonContent li {
+    color: #334155;
+}
+
+#lessonContent pre {
+    background: #020617;
+    padding: 16px;
+    border-radius: 10px;
+    color: #22c55e;
+    overflow-x: auto;
+    font-size: 13px;
+    margin: 12px 0;
+}
+
+/* Business Cases Grid */
+.business-cases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+}
+
+.case-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.case-card h5 {
+    color: var(--primary);
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* Decision Scenario */
+.decision-scenario {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid var(--primary);
+    border-radius: 14px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.decision-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 14px 18px;
+    margin: 8px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.decision-option:hover {
+    border-color: var(--primary);
+    transform: translateX(4px);
+}
+
+.decision-result {
+    margin-top: 16px;
+    padding: 16px;
+    background: rgba(34, 197, 94, 0.1);
+    border-left: 4px solid var(--success);
+    border-radius: 8px;
+}
+
+/* Interactive Quiz */
+.quiz-container {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.quiz-question {
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.quiz-options label {
+    display: block;
+    padding: 10px 14px;
+    margin: 6px 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.quiz-options label:hover {
+    border-color: var(--primary);
+}
+
+/* Navigation Buttons */
+.lesson-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin: 28px 0 20px;
+    gap: 12px;
+}
+
+.lesson-navigation button {
+    flex: 1;
+    background: var(--primary);
+    color: white;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* Calculator & Excel Cards */
+.calculator-grid, .excel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 16px;
+}
+
+.calculator-card, .excel-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.calculator-card:hover, .excel-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.calculator-card h3, .excel-card h3 {
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+/* Dashboard */
+.dashboard-hero {
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white;
+    padding: 32px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+}
+
+.dashboard-hero h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+.module-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.module-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 20px;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--card);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 720px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 28px;
+    border: 1px solid var(--border);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px;
+    display: flex;
+    cursor: pointer;
+}
+
+/* Mobile Responsive */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        transform: translateX(-100%);
+        box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 20px 16px;
+    }
+    
+    .hamburger {
+        display: block;
+    }
+    
+    .lesson-header {
+        flex-direction: column;
+    }
+    
+    .lesson-actions {
+        width: 100%;
+    }
+    
+    .lesson-actions button {
+        flex: 1;
+    }
+}
+
+/* P1 Polish */
+.decision-option, .quiz-options label {
+    transition: all 0.15s;
+}
+
+.decision-option:hover {
+    transform: translateX(4px);
+    border-color: var(--primary);
+}
+
+
+
+/* =============================================
+   P3 - Hero Button Styling
+============================================= */
+.hero-btn {
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.hero-btn.primary {
+    background: white;
+    color: #1e40af;
+    border: none;
+}
+
+.hero-btn.secondary {
+    background: rgba(255,255,255,0.12);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.4);
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+/* =============================================
+   P3 UI Polish - Professional Dark Theme
+============================================= */
+
+/* Lesson Card - More Professional */
+.lesson-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Headings */
+#lessonContent h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #60a5fa;
+    margin: 32px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Business Cases Grid - Better Look */
+.business-cases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.case-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 14px;
+    padding: 20px;
+    transition: transform 0.2s ease;
+}
+
+.case-card:hover {
+    transform: translateY(-3px);
+}
+
+.case-card h5 {
+    color: #3b82f6;
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Decision Scenario - Premium Look */
+.decision-scenario {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid #3b82f6;
+    border-radius: 16px;
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.decision-option {
+    background: #1e293b;
+    border: 1px solid #475569;
+    color: #f1f5f9;
+    padding: 16px 20px;
+    margin: 10px 0;
+    border-radius: 12px;
+    font-size: 14.5px;
+    transition: all 0.2s;
+}
+
+.decision-option:hover {
+    border-color: #3b82f6;
+    background: #334155;
+    transform: translateX(6px);
+}
+
+/* Quiz Styling */
+.quiz-container {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.quiz-question {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 14px;
+    color: #e2e8f0;
+}
+
+/* Modal Polish */
+.modal-content {
+    background: #1e293b;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid #475569;
+    max-width: 780px;
+}
+
+/* Dashboard Hero - Better */
+.dashboard-hero {
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white;
+    padding: 40px;
+    border-radius: 24px;
+    margin-bottom: 32px;
+}
+
+/* Module Cards */
+.module-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 18px;
+    padding: 24px;
+    transition: all 0.2s ease;
+}
+
+.module-card:hover {
+    border-color: #3b82f6;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Excel Cards */
+.excel-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 22px;
+}
+
+
+/* =============================================
+   Simulator Modal Polish (P3)
+============================================= */
+.modal-content h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.modal-content label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.modal-content input,
+.modal-content select {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.modal-content button {
+    transition: all 0.2s ease;
+}
+
+.modal-content button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Result boxes */
+#cf_results, #pp_results, #proc_results, #op_results {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
